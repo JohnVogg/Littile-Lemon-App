@@ -27,6 +27,7 @@ function BookingForm() {
         alert(`Booking confirmed for ${guests} guest(s) at ${time} on ${date}!`);
     };
 
+
     return (
         <form
             onSumbit={handleSumbit}
@@ -65,7 +66,7 @@ function BookingForm() {
                 id="guests"
                 min="1"
                 max="10"
-                value={guests}
+                value={guest}
                 onChange={(e) => setGuests(e.target.value)}
             />
 

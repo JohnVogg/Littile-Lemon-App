@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import BookingPage from "./BookingPage";
 
 
 function Homepage() {
@@ -22,12 +23,6 @@ function MenuPage() {
   );
 }
 
-function ReservationPage() {
-  return (
-    <h1>Reservations</h1>
-  );
-}
-
 function OrderPage() {
   return (
     <h1>Order Online</h1>
@@ -47,7 +42,7 @@ function Main() {
         <Route path="/" element={<Homepage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/menu" element={<MenuPage />} />
-        <Route path="/reservations" element={<ReservationPage />} />
+        <Route path="/booking" element={<BookingPage />} />
         <Route path="/order" element={<OrderPage />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>
