@@ -3,7 +3,7 @@ import { useState } from "react";
 function BookingForm() {
     const [date, setDate] = useState("");
     const [time, setTime] = useState("");
-    const [guest, setGuests] = useState(1);
+    const [guests, setGuests] = useState(1);
     const [occasion, setOccasion] = useState("Birthday");
 
     //Stateful list of available times
@@ -66,7 +66,7 @@ function BookingForm() {
                 id="guests"
                 min="1"
                 max="10"
-                value={guest}
+                value={guests}
                 onChange={(e) => setGuests(e.target.value)}
             />
 
