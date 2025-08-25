@@ -6,16 +6,6 @@ function BookingForm() {
     const [guests, setGuests] = useState(1);
     const [occasion, setOccasion] = useState("Birthday");
 
-    //Stateful list of available times
-    const [availableTimes] = useState([
-        "17:00",
-        "18:00",
-        "19:00",
-        "20:00",
-        "21:00",
-    ]);
-
-
     const handleSumbit = (e) => {
         e.preventDefault();
         console.log({
