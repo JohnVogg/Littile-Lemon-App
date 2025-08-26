@@ -1,5 +1,6 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import BookingPage from "./BookingPage";
+import ConfirmedBooking from "./ConfirmedBooking";
 import { useReducer } from "react";
 import { fetchAPI } from "../../public/index.html";
 
@@ -46,8 +47,16 @@ function LoginPage() {
   );
 }
 
+function submitForm(formData) {
+  const response = submitAPI(formData);
+  if (response === true) {
+    navigate("/confirmed");
+  }
+}
+
 function Main() {
   const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
+  const navigate = useNavigate();
 
   return (
     <main>
@@ -56,6 +65,7 @@ function Main() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/menu" element={<MenuPage />} />
         <Route path="/booking" element={<BookingPage availableTimes={availableTimes} updateTimes={dispatch} />} />
+        <Route path="/confirmed" element={<ConfirmedBooking />} />
         <Route path="/order" element={<OrderPage />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>
