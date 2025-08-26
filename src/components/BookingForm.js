@@ -24,15 +24,18 @@ function BookingForm({availableTimes, dispatch, submitForm }) {
         submitForm(formData);  //call function from Main
     }
 
+    const isFormValid = (formData.date && formData.time && formData.guests >= 1 && formData.guests <= 10);
+
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSumbit}>
           <label htmlFor="res-date">Choose date</label>
           <input
             type="date"
             id="res-date"
             name="date"
             value={formData.date}
+            min={new Date().toISOString().split("T")[0]} //Doen not allow the user to choose the past
             onChange={handleChange}
             required
           />
@@ -73,7 +76,9 @@ function BookingForm({availableTimes, dispatch, submitForm }) {
             <option>Anniversary</option>
         </select>
     
-        <button type="submit">Make Your reservation</button>
+        <button type="submit" disabled={!isFormValid}>
+            Make Your reservation
+        </button>
     </form>
     );
 }
