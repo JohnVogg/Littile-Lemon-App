@@ -1,20 +1,16 @@
 import { Routes, Route } from "react-router-dom";
 import BookingPage from "./BookingPage";
 import { useReducer } from "react";
+import { fetchAPI } from "../../public/index.html";
 
 
 function initializeTimes() {
-  return ["17:00", "18:00", "19:00", "20:00", "21:00"];
+  const today = new Date();
+  return fetchAPI(today);
 }
 
-function updateTimes(state, action) {
-  switch (action.type) {
-    case "update_date":
-      //For now, always return the same times
-      return initializeTimes();
-      default:
-        return state;
-  }
+function updateTimes(state, date) {
+  return fetchAPI(new Date(date));
 }
 
 function Homepage() {
@@ -51,7 +47,7 @@ function LoginPage() {
 }
 
 function Main() {
-  const [availableTimes, dispatch] = useReducer(updateTimes, [], initializeTimes);
+  const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
 
   return (
     <main>
@@ -59,7 +55,7 @@ function Main() {
         <Route path="/" element={<Homepage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/menu" element={<MenuPage />} />
-        <Route path="/booking" element={<BookingPage availableTimes={availableTimes} dispatch={dispatch} />} />
+        <Route path="/booking" element={<BookingPage availableTimes={availableTimes} updateTimes={dispatch} />} />
         <Route path="/order" element={<OrderPage />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>

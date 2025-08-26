@@ -29,7 +29,11 @@ function BookingForm() {
                 type="date"
                 id="res-date"
                 value={date}
-                onChange={(e) => setDate(e.target.value)}
+                onChange={
+                    (e) => {
+                        setDate(e.target.value);
+                        props.updateTimes(e.target.value); //dispatch new data to Main
+                }}
                 required
             />
 
