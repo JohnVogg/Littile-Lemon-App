@@ -2,7 +2,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import BookingPage from "./BookingPage";
 import ConfirmedBooking from "./ConfirmedBooking";
 import { useReducer } from "react";
-import { fetchAPI, submitAPI } from "../../api"; // Corrected import
+import { fetchAPI, submitAPI } from "../api"; // Updated import path
 
 
 function initializeTimes() {
