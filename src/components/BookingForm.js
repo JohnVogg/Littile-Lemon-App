@@ -48,7 +48,7 @@ function BookingForm({availableTimes, dispatch, submitForm }) {
             onChange={handleChange}
             required
         >
-        {availableTimes.map((time) => (
+        {Array.isArray(availableTimes) && availableTimes.map((time) => (
             <option key={time}>{time}</option>
             ))}
         </select>
