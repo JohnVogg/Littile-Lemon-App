@@ -2,7 +2,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import BookingPage from "./BookingPage";
 import ConfirmedBooking from "./ConfirmedBooking";
 import { useReducer } from "react";
-import { fetchAPI } from "../../public/index.html";
+import { fetchAPI, submitAPI } from "../../api"; // Corrected import
 
 
 function initializeTimes() {
@@ -47,7 +47,7 @@ function LoginPage() {
   );
 }
 
-function submitForm(formData) {
+function submitForm(formData, navigate) { // Added navigate as a parameter
   const response = submitAPI(formData);
   if (response === true) {
     navigate("/confirmed");
